@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>DJ WILMER - La música que te acompaña las 24 horas</title>
+  <meta name="description" content="DJ WILMER: radio online en vivo las 24 horas. La mejor música, mixes y programación desde tu móvil o PC." />
+  <meta name="theme-color" id="meta-theme-color" content="#FF4500" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- PWA / iOS -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DJ WILMER" />
+  <meta name="application-name" content="DJ WILMER" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="music.radio_station" />
+  <meta property="og:title" content="DJ WILMER - Radio Online" />
+  <meta property="og:description" content="La música que te acompaña las 24 horas. Escúchanos en vivo." />
+  <meta property="og:image" content="assets/img/logo-1024.png" />
+
+  <!-- Fuentes locales (funcionan offline) -->
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-player-template="11">
+
+  <!-- Splash de arranque -->
+  <div class="app-splash" id="app-splash" aria-hidden="true">
+    <img src="assets/img/logo-1024.png" alt="" class="app-splash-logo" />
+    <div class="spinner"></div>
+  </div>
+
+  <div class="cuarzo-page-wrapper" id="app-container">
+    <!-- Contenedor tipo smartphone -->
+    <div class="cuarzo-device-container" id="cuarzo-device" data-active-tab="live">
+
+      <!-- Fondo consola -->
+      <div id="customBgLayer" class="cuarzo-console-bg"></div>
+
+      <!-- Degradado curvo naranja/rojo -->
+      <div class="cuarzo-curved-gradient-overlay" aria-hidden="true">
+        <svg viewBox="0 0 430 932" preserveAspectRatio="none" fill="none">
+          <defs>
+            <linearGradient id="cuarzoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop id="cuarzoStop0" offset="0%" stop-color="#c41026" />
+              <stop id="cuarzoStop1" offset="45%" stop-color="#e82c40" />
+              <stop id="cuarzoStop2" offset="75%" stop-color="#FF4500" />
+              <stop id="cuarzoStop3" offset="100%" stop-color="#FF4500" />
+            </linearGradient>
+          </defs>
+          <path d="M 0 0 L 430 0 C 300 250 360 650 430 932 L 0 932 Z" fill="url(#cuarzoGrad)" />
+        </svg>
+      </div>
+
+      <!-- Cabecera: menú hamburguesa + compartir -->
+      <header class="cuarzo-top-header">
+        <button class="cuarzo-menu-btn" id="cuarzo-menu-toggle" type="button" title="Alternar Programación / En Vivo" aria-label="Alternar Programación / En Vivo" aria-pressed="false">
+          <span class="cuarzo-menu-icon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="cuarzo-menu-text" id="cuarzo-menu-text">PROGRAMACIÓN</span>
+        </button>
+
+        <div class="share-wrapper" id="share-wrapper">
+          <button class="cuarzo-share-btn" id="share-btn" type="button" title="Compartir radio" aria-label="Compartir estación" aria-expanded="false" aria-haspopup="menu">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </button>
+
+          <div class="share-menu" id="share-menu" role="menu" aria-label="Compartir">
+            <a href="#" id="share-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="share-option-btn share-whatsapp" role="menuitem">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>WhatsApp</span>
+            </a>
+            <a href="#" id="share-facebook-btn" target="_blank" rel="noopener noreferrer" class="share-option-btn share-facebook" role="menuitem">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Área de vistas -->
+      <div class="cuarzo-views-area" id="radio-content">
+
+        <!-- VISTA 1: EN VIVO -->
+        <main class="cuarzo-main-content" id="live-view">
+          <section class="cuarzo-logo-section" aria-label="Estación DJ WILMER">
+            <!-- Ecualizador de fondo -->
+            <div id="waveform" class="cuarzo-waveform-bg" aria-hidden="true">
+              <div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div>
+              <div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div>
+              <div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div>
+              <div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div>
+              <div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div><div class="cuarzo-w-bar"></div>
+            </div>
+
+            <!-- Logo giratorio -->
+            <div class="cuarzo-logo-wrapper" id="artwork-container">
+              <img id="station-cover" class="cuarzo-main-logo" src="assets/img/logo-1024.png" alt="Logo de DJ WILMER" width="1024" height="1024" />
+            </div>
+
+            <div class="cuarzo-live-badge" id="live-badge">SONANDO EN VIVO</div>
+          </section>
+
+          <!-- Botón principal play / pause -->
+          <section class="cuarzo-player-center" id="player-controls" aria-label="Controles de reproducción">
+            <div class="cuarzo-play-btn-outer">
+              <button id="play-btn" class="cuarzo-play-btn" type="button" title="Reproducir / Pausar" aria-label="Reproducir radio" aria-pressed="false">
+                <svg class="icon-play" viewBox="0 0 24 24" width="44" height="44" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.54.84l11-7.5a1 1 0 0 0 0-1.68l-11-7.5A1 1 0 0 0 7 4.5Z"/></svg>
+              </button>
+            </div>
+          </section>
+
+          <!-- Redes sociales flotantes -->
+          <aside class="cuarzo-social-column" id="social-list" aria-label="Redes sociales"></aside>
+
+          <!-- Información de la emisora -->
+          <footer class="cuarzo-bottom-info">
+            <h1 id="station-name" class="cuarzo-radio-title">DJ WILMER</h1>
+            <p id="station-slogan" class="cuarzo-radio-subtitle">La música que te acompaña las 24 horas</p>
+
+            <div id="station-now-playing" class="cuarzo-now-playing" style="display: none;" aria-live="polite">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              <span class="now-playing-title" id="now-playing-title"></span>
+            </div>
+
+            <button class="install-pwa-btn" id="install-pwa-btn" type="button" title="Instalar aplicación en tu dispositivo">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span id="install-pwa-text">Instalar App</span>
+            </button>
+
+            <button type="button" class="qr-download-btn" id="qr-download-btn" title="Escanear o descargar Código QR" style="display: none;">
+              <img src="icons/icon-192.png" class="qr-code-thumb" alt="" width="20" height="20" />
+              <span class="qr-code-label">Código QR</span>
+            </button>
+          </footer>
+        </main>
+
+        <!-- VISTA 2: PROGRAMACIÓN -->
+        <section class="cuarzo-schedule-view" id="schedule-view" aria-label="Programación semanal">
+          <div class="cuarzo-schedule-card" id="schedule-card">
+            <div class="schedule-card-header">
+              <div class="schedule-header-title-box">
+                <div class="schedule-header-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                    <line x1="16" x2="16" y1="2" y2="6"></line>
+                    <line x1="8" x2="8" y1="2" y2="6"></line>
+                    <line x1="3" x2="21" y1="10" y2="10"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="schedule-card-title">Programación y Horarios</h2>
+                  <p class="schedule-card-subtitle" id="schedule-card-subtitle">Grilla de programas en vivo</p>
+                </div>
+              </div>
+            </div>
+            <div class="schedule-card-body" id="schedule-card-body">
+              <div class="schedule-days-nav" id="schedule-days-nav" role="tablist" aria-label="Días de la semana"></div>
+              <div class="schedule-list-content" id="schedule-list-content" role="tabpanel"></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Barra gestual Android -->
+      <div class="cuarzo-android-bar" aria-hidden="true"></div>
+    </div>
+
+    <!-- Footer / CTA instalar -->
+    <div class="cuarzo-promo-footer" id="promo-footer">
+      <a href="#" id="install-promo" class="activate-radio-card">
+        <div class="activate-radio-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+          </svg>
+        </div>
+        <div class="activate-radio-copy">
+          <div class="activate-radio-title">DJ WILMER · Radio Online</div>
+          <div class="activate-radio-desc">Instala la app y escúchala donde quieras →</div>
+        </div>
+      </a>
+      <small class="cuarzo-footer-text">© <span id="current-year">2026</span> <strong>DJ WILMER</strong> · PWA</small>
+    </div>
+  </div>
+
+  <!-- Modal instalación iOS -->
+  <div class="modal-backdrop" id="ios-pwa-modal" role="dialog" aria-modal="true" aria-labelledby="ios-pwa-title">
+    <div class="modal-content modal-content-ios">
+      <button class="modal-close-btn" id="close-ios-pwa-modal" type="button" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-icon-badge">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="ios-pwa-title">Instalar en tu iPhone / iPad</h3>
+      <p class="modal-text">Agrega DJ WILMER a tu pantalla de inicio para escucharla en vivo sin abrir el navegador:</p>
+      <div class="ios-steps">
+        <div class="ios-step">
+          <span class="ios-step-number">1</span>
+          <span>Toca el botón <strong>Compartir</strong> en Safari
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" class="inline-icon" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>.
+          </span>
+        </div>
+        <div class="ios-step">
+          <span class="ios-step-number">2</span>
+          <span>Selecciona <strong>"Agregar al inicio"</strong> (o <em>"Add to Home Screen"</em>).</span>
+        </div>
+      </div>
+      <button id="ok-ios-pwa-btn" class="btn-primary" type="button">¡Entendido!</button>
+    </div>
+  </div>
+
+  <!-- Modal QR -->
+  <div class="modal-backdrop" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+    <div class="modal-content modal-content-qr">
+      <button class="modal-close-btn" id="close-qr-modal" type="button" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-icon-badge">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+          <path d="M7 7h.01"></path><path d="M17 7h.01"></path><path d="M7 17h.01"></path><path d="M17 17h.01"></path>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="qr-modal-title">App de DJ WILMER</h3>
+      <p class="modal-text">Apunta la cámara de tu teléfono al código QR para abrir la radio e instalarla:</p>
+      <div class="qr-box">
+        <img id="qr-modal-img" src="" alt="Código QR de DJ WILMER" width="200" height="200" />
+      </div>
+      <a id="qr-modal-download-btn" href="#" download="dj-wilmer-qr.png" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Descargar QR</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Enlace copiado al portapapeles</div>
+
+  <audio id="audio-player" preload="none"></audio>
+
+  <noscript>
+    <div class="noscript">Para escuchar DJ WILMER necesitas activar JavaScript en tu navegador.</div>
+  </noscript>
+
+  <script src="libs/qrcode.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
