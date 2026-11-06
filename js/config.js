@@ -21,9 +21,9 @@ window.DJ_WILMER = {
        - audio_streaming_url: stream principal (MP3 / AAC).
        - audio_hls_url: alternativa HLS (.m3u8), se usa si está disponible.
        - radio_url_api: endpoint opcional que devuelve el tema actual. */
-    audio_streaming_url: 'https://icecast.crispro941.cl/8006/stream',
+    audio_streaming_url: 'https://stream.zeno.fm/zzrxpmz2mv8uv',
     audio_hls_url: '.../hls/live.m3u8',
-    radio_url_api: 'https://icecast.crispro941.cl/cp/get_info.php?p=8006',
+    radio_url_api: 'https://api.zeno.fm/mounts/metadata/subscribe/zzrxpmz2mv8uv',
 
     /* Redes sociales.
        IMPORTANTE: estos son datos de ejemplo copiados del reproductor
